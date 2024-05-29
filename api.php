@@ -1,5 +1,6 @@
 <?php
-$keyproxy = "TLW2JEs7uzlOiSKMVIMzS8udEV6Upzmt2R7Dqf";
+// Đã Có Tự Động Change IP Chỉ Cần Việc Về Là Sử Dụng
+$keyproxy = "TLW2JEs7uzlOiSKMVIMzS8udEV6Upzmt2R7Dqf"; // lấy api tại https://tinsoftproxy.com/
 $tenmien = [
     "https://napthe.vn",
     "https://shop.garena.sg",
@@ -14,7 +15,7 @@ $random_mien = $tenmien[array_rand($tenmien)];
 $url = $random_mien . "api/auth/player_id_login";
 $idgame = "335518211";
 $proxy_info = json_decode(file_get_contents("https://proxy.tinsoftsv.com/api/getProxy.php?key=" . $keyproxy), true);
-if ($proxy_info['success'] == 'false') {
+if ($proxy_info['success'] == 'false' && $proxy_info['next_change'] == '0') {
     $change_proxy_info = json_decode(file_get_contents("https://proxy.tinsoftsv.com/api/changeProxy.php?key=" . $keyproxy), true);
 }
 $proxy_ip = $proxy_info['proxy'];
